@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flight Prediction System</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+        <header class="hero">
+                <div class="hero-content">
+                        <div>
+                                <p class="eyebrow">Deployment Pipeline</p>
+                                <h1>Flight Prediction AI</h1>
+                                <p class="lead">
+                                        An advanced classification system to predict flight cancellations.
+                                        Uses a full pipeline with Cyclic Transformation, Ordinal Encoding, and MinMax
+                                        Scaling.
+                                </p>
+                        </div>
+                </div>
+        </header>
+
+        <main class="container">
+                <div class="tabs">
+                        <button class="tab-btn active" onclick="switchTab('predict')">Single Prediction</button>
+                        <button class="tab-btn" onclick="switchTab('evaluate')">Performance Estimation</button>
+                </div>
+
+                <!-- Single Prediction Section -->
+                <div id="predict-tab" class="glass-card active" style="margin-bottom: 10px;">
+                        <div class="panel-header" style="margin-bottom: 10px;">
+                                <h2>Predict Cancellation</h2>
+                                <div class="form-group" style="min-width: 200px;" style="margin-bottom: 10px;">
+                                        <select id="single-model-select" style="margin-bottom: 10px;">
+                                                <option value="nb">Naive Bayes</option>
+                                                <option value="knn">K-Nearest Neighbors</option>
+                                                <option value="lr">Logistic Regression</option>
+                                                <option value="dt">Decision Tree</option>
+                                                <option value="mlp">Multi-layer Perceptron</option>
+                                                <option value="rf">Random Forest</option>
+                                        </select>
+                                </div>
+                        </div>
+
+                        <form id="prediction-form" class="form-grid">
+                                <!-- Inputs in specific order -->
+                                <div class="form-group"><label>FlightDate</label><input type="text" name="FlightDate"
+                                                value="2022-04-04"></div>
+                                <div class="form-group"><label>Airline</label><input type="text" name="Airline"
+                                                value="Delta Air Lines Inc."></div>
+                                <div class="form-group"><label>Origin</label><input type="text" name="Origin"
+                                                value="JFK"></div>
+                                <div class="form-group"><label>Dest</label><input type="text" name="Dest" value="LAX">
+                                </div>
+                                <div class="form-group"><label>CRSDepTime</label><input type="number" name="CRSDepTime"
+                                                value="600"></div>
+                                <div class="form-group"><label>CRSElapsedTime</label><input type="number"
+                                                name="CRSElapsedTime" value="350"></div>
+                                <div class="form-group"><label>Distance</label><input type="number" name="Distance"
+                                                value="2475"></div>
+                                <div class="form-group"><label>Year</label><input type="number" name="Year"
+                                                value="2022"></div>
+                                <div class="form-group"><label>Quarter</label><input type="number" name="Quarter"
+                                                value="2"></div>
+                                <div class="form-group"><label>Month</label><input type="number" name="Month" value="4">
+                                </div>
+                                <div class="form-group"><label>DayofMonth</label><input type="number" name="DayofMonth"
+                                                value="4"></div>
+                                <div class="form-group"><label>DayOfWeek</label><input type="number" name="DayOfWeek"
+                                                value="1"></div>
+                                <div class="form-group"><label>Marketing_Airline_Network</label><input type="text"
+                                                name="Marketing_Airline_Network" value="DL"></div>
+                                <div class="form-group"><label>Operated_or_Branded_Code_Share_Partners</label><input
+                                                type="text" name="Operated_or_Branded_Code_Share_Partners" value="DL">
+                                </div>
+                                <div class="form-group"><label>DOT_ID_Marketing_Airline</label><input type="number"
+                                                name="DOT_ID_Marketing_Airline" value="19790"></div>
+                                <div class="form-group"><label>IATA_Code_Marketing_Airline</label><input type="text"
+                                                name="IATA_Code_Marketing_Airline" value="DL"></div>
+                                <div class="form-group"><label>Flight_Number_Marketing_Airline</label><input
+                                                type="number" name="Flight_Number_Marketing_Airline" value="1234"></div>
+                                <div class="form-group"><label>Operating_Airline</label><input type="text"
+                                                name="Operating_Airline" value="DL"></div>
+                                <div class="form-group"><label>DOT_ID_Operating_Airline</label><input type="number"
+                                                name="DOT_ID_Operating_Airline" value="19790"></div>
+                                <div class="form-group"><label>IATA_Code_Operating_Airline</label><input type="text"
+                                                name="IATA_Code_Operating_Airline" value="DL"></div>
+                                <div class="form-group"><label>Tail_Number</label><input type="text" name="Tail_Number"
+                                                value="N324US"></div>
+                                <div class="form-group"><label>Flight_Number_Operating_Airline</label><input
+                                                type="number" name="Flight_Number_Operating_Airline" value="1234"></div>
+                                <div class="form-group"><label>OriginAirportID</label><input type="number"
+                                                name="OriginAirportID" value="12478"></div>
+                                <div class="form-group"><label>OriginAirportSeqID</label><input type="number"
+                                                name="OriginAirportSeqID" value="1247805"></div>
+                                <div class="form-group"><label>OriginCityMarketID</label><input type="number"
+                                                name="OriginCityMarketID" value="31703"></div>
+                                <div class="form-group"><label>OriginCityName</label><input type="text"
+                                                name="OriginCityName" value="New York, NY"></div>
+                                <div class="form-group"><label>OriginState</label><input type="text" name="OriginState"
+                                                value="NY"></div>
+                                <div class="form-group"><label>OriginStateFips</label><input type="number"
+                                                name="OriginStateFips" value="36"></div>
+                                <div class="form-group"><label>OriginStateName</label><input type="text"
+                                                name="OriginStateName" value="New York"></div>
+                                <div class="form-group"><label>OriginWac</label><input type="number" name="OriginWac"
+                                                value="22"></div>
+                                <div class="form-group"><label>DestAirportID</label><input type="number"
+                                                name="DestAirportID" value="12892"></div>
+                                <div class="form-group"><label>DestAirportSeqID</label><input type="number"
+                                                name="DestAirportSeqID" value="1289208"></div>
+                                <div class="form-group"><label>DestCityMarketID</label><input type="number"
+                                                name="DestCityMarketID" value="32575"></div>
+                                <div class="form-group"><label>DestCityName</label><input type="text"
+                                                name="DestCityName" value="Los Angeles, CA"></div>
+                                <div class="form-group"><label>DestState</label><input type="text" name="DestState"
+                                                value="CA"></div>
+                                <div class="form-group"><label>DestStateFips</label><input type="number"
+                                                name="DestStateFips" value="6"></div>
+                                <div class="form-group"><label>DestStateName</label><input type="text"
+                                                name="DestStateName" value="California"></div>
+                                <div class="form-group"><label>DestWac</label><input type="number" name="DestWac"
+                                                value="91"></div>
+                                <div class="form-group"><label>DepTimeBlk</label><input type="text" name="DepTimeBlk"
+                                                value="0600-0659"></div>
+                                <div class="form-group"><label>CRSArrTime</label><input type="number" name="CRSArrTime"
+                                                value="930"></div>
+                                <div class="form-group"><label>ArrTimeBlk</label><input type="text" name="ArrTimeBlk"
+                                                value="0900-0959"></div>
+                                <div class="form-group"><label>DistanceGroup</label><input type="number"
+                                                name="DistanceGroup" value="10"></div>
+                        </form>
+
+                        <button class="btn-primary" onclick="predict()">Run Inference</button>
+
+                        <div id="prediction-result">
+                                <!-- Result injected here -->
+                        </div>
+                </div>
+
+                <!-- Evaluation Section -->
+                <div id="evaluate-tab" class="glass-card">
+                        <h2>Model Performance Evaluation</h2>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                                <label>Select Model(s) to Evaluate</label>
+                                <select id="eval-model-select">
+                                        <option value="all">All Models</option>
+                                        <option value="nb">Naive Bayes</option>
+                                        <option value="knn">KNN</option>
+                                        <option value="lr">Logistic Regression</option>
+                                        <option value="dt">Decision Tree</option>
+                                        <option value="mlp">Multi-layer Perceptron</option>
+                                        <option value="rf">Random Forest</option>
+                                </select>
+                        </div>
+
+                        <div class="upload-zone" onclick="document.getElementById('file-upload').click()">
+                                <p style="color: var(--primary); font-weight: 600;">Click to Upload Validation Dataset
+                                        (.csv)</p>
+                                <p style="font-size: 0.9rem; margin-top: 8px;">Supports raw CSV with target column
+                                        'Cancelled'</p>
+                                <input type="file" id="file-upload" hidden accept=".csv">
+                                <p id="file-name" style="margin-top: 10px; color: var(--accent); font-weight: bold;">
+                                </p>
+                        </div>
+
+                        <button class="btn-primary" onclick="evaluate_models()">Evaluate Performance</button>
+
+                        <div id="evaluation-results">
+                                <!-- Results injected here -->
+                        </div>
+                </div>
+        </main>
+
+        <script src="script.js"></script>
+</body>
+
+</html>

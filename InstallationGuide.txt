@@ -1,0 +1,50 @@
+====================================
+       INSTALLATION GUIDE
+====================================
+
+REQUIREMENTS:
+- Python 3.10 or higher
+
+------------------------------------
+INSTALLATION STEPS:
+------------------------------------
+
+1. Open terminal
+
+2. Navigate to the project folder:
+   cd "path/to/Deployment/folder"
+
+3. Create virtual environment:
+   python -m venv .venv
+
+4. Activate virtual environment:
+   Windows:  .venv\Scripts\activate
+   Mac/Linux: source .venv/bin/activate
+
+5. Update pip (REQUIRED):
+   python -m pip install --upgrade pip
+
+6. Install dependencies:
+   pip install -r requirements.txt --only-binary :all:
+
+------------------------------------
+HOW TO RUN:
+------------------------------------
+
+1. Make sure virtual environment is active:
+   Windows:  .venv\Scripts\activate
+   Mac/Linux: source .venv/bin/activate
+
+2. Start the server:
+   python -m uvicorn server.main:app --reload
+
+3. Open browser:
+   http://localhost:8000
+
+------------------------------------
+NOTES:
+------------------------------------
+- To stop the server: Ctrl + C
+- To deactivate environment: deactivate
+
+====================================

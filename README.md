@@ -1,6 +1,19 @@
 # Flight Cancellation Prediction System
 
-A machine learning-powered web application for predicting flight cancellations. Built with a robust data pipeline and multiple classification models, this system enables real-time predictions and batch model evaluation through an intuitive web interface.
+A machine learning-powered web application for predicting flight cancellations. Built with a robust data pipeline and multiple classification models, this system enables real-time predictions and batch model evaluation through an intuitive web interface.  
+**This project was developed as part of a university course assignment (Data Science).**
+
+## Contents
+
+- [Overview](#overview)  
+- [Features](#features)  
+- [Technology Stack](#technology-stack)  
+- [Project Structure](#project-structure)  
+- [Data Pipeline](#data-pipeline)  
+- [Installation](#installation)  
+- [API Endpoints](#api-endpoints)
+
+---
 
 ## Overview
 
@@ -12,6 +25,8 @@ The system handles the complete data science workflow:
 - **Model Training**: Multiple classifier algorithms with configurable hyperparameters
 - **Inference Pipeline**: Consistent transformation of new data for real-time predictions
 - **Model Evaluation**: Batch evaluation with standard classification metrics
+
+---
 
 ## Features
 
@@ -30,6 +45,8 @@ Choose from six different classification algorithms:
 - **Multi-Layer Perceptron** (MLP)
 - **Random Forest**
 
+---
+
 ## Technology Stack
 
 | Component | Technology |
@@ -39,6 +56,8 @@ Choose from six different classification algorithms:
 | Data Processing | Pandas, NumPy |
 | Model Persistence | Joblib |
 | Frontend | HTML5, CSS3, JavaScript |
+
+---
 
 ## Project Structure
 
@@ -72,6 +91,8 @@ Choose from six different classification algorithms:
 └── codes/                    # Original preprocessing scripts (reference)
 ```
 
+---
+
 ## Data Pipeline
 
 The preprocessing pipeline applies the following transformations:
@@ -82,6 +103,8 @@ The preprocessing pipeline applies the following transformations:
 4. **Ordinal Encoding**: Categorical to numeric conversion for string features
 5. **MinMax Scaling**: Feature normalization to [0,1] range
 6. **Feature Selection**: Retention of 37 selected features for model input
+
+---
 
 ## Installation
 
@@ -122,6 +145,8 @@ To retrain models with new data:
 python save_objects.py
 ```
 
+---
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
@@ -130,6 +155,14 @@ python save_objects.py
 | POST | `/predict` | Single flight prediction |
 | POST | `/evaluate` | Batch model evaluation |
 
-## License
+---
 
-This project was developed as part of an academic Data Science course.
+## License & Acknowledgments
+
+- Educational project developed as part of an academic Data Science course.  
+- Built on top of Scikit-learn for classical ML models and FastAPI for the serving layer.  
+- Pandas and NumPy for data preprocessing and feature engineering.
+
+---
+
+*README written with supervised assistance from Claude Opus 4.7.*
